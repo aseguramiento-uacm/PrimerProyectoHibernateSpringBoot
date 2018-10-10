@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import mx.edu.uacm.Application;
+import mx.edu.uacm.domain.Accesorio;
 import mx.edu.uacm.domain.Vehiculo;
 import mx.edu.uacm.repository.VehiculoRepository;
 
@@ -39,6 +40,13 @@ public class VehiculoTest {
 		vehiculoRepository.save(vehiculo);
 	}
 	
+	@Test
+	public void testGuardarVehiculoConAccesorios() {
+		
+		Accesorio accesorio = 
+				new Accesorio("Aleron");
+		
+	}
 	
 
 }
