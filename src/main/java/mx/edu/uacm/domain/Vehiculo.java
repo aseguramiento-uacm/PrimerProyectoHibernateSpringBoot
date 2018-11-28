@@ -10,33 +10,34 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.FetchType;
 
 @Entity
 public class Vehiculo {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;
+	private Long id;
 	
 	@Column
 	private String modelo;
 	
 	@OneToMany(cascade=CascadeType.ALL,
-			orphanRemoval=true)
+			orphanRemoval=true, fetch=FetchType.EAGER)
 	private List<Accesorio> accesorios = 
 			new ArrayList<Accesorio>();
 
 	/**
 	 * @return the id
 	 */
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -59,6 +60,22 @@ public class Vehiculo {
 		this.accesorios = accesorios; 
 		
 	}
+
+	/**
+	 * @return the accesorios
+	 */
+	public List<Accesorio> getAccesorios() {
+		return accesorios;
+	}
+
+	/**
+	 * @param accesorios the accesorios to set
+	 */
+	public void setAccesorios(List<Accesorio> accesorios) {
+		this.accesorios = accesorios;
+	}
+	
+	
 	
 	
 

@@ -81,11 +81,18 @@ public class VehiculoTest {
 		
 		vehiculoRepository.save(vehiculo);
 		
+		vehiculo.setModelo("2022");
+		
+		vehiculoRepository.save(vehiculo); //-->update
+		
 		//para buscar un vehiculo en la base de datos
-		Optional<Vehiculo> vehiculoRescatado = vehiculoRepository.findById(new Long(vehiculo.getId()));
+		//https://stackoverflow.com/questions/49316751/spring-data-jpa-findone-change-to-optional-how-to-use-this
+		Vehiculo vehiculoRescatado = vehiculoRepository.
+				findById(new Long(vehiculo.getId())).orElse(null);
 		
+		vehiculoRepository.delete(vehiculo);
 		
-		//Assert.assertTrue();
+		Assert.assertTrue(vehiculoRescatado.getAccesorios().size() > 1);
 	}
 	
 
